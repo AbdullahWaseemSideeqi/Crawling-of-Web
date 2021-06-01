@@ -1,6 +1,7 @@
 # Web-Crawler
 
 ## Web Crawler Notebook flow
+ 
  In this notebook initially a set of seed urls were provided, which were then put in a frontier (comprised of front and back queues). Then each thread out of set of 9 pops a url
  one of the back queue present in the frontier. After poping the url from one of the back queue the same thread checks if that queue gets empty, if so then it populates it with 
  further urls until it doesn't remain empty. After populating the queue with some url, the thread then hits the Url using urlib library with the help of http request response
@@ -13,11 +14,13 @@
  whole life cycle continues until a certain threshold (indicating specific no of urls are being crawled) ia reached.
  
 ## Url Frontier Structure
+
  Url frontier is composed of two different type of queues i.e front queues and back queus. The number of front queues and back queues for now are kept 5 and 3 respectively. As  
  first step some urls from set of seed urls are pushed to these front queues. The assigning of urls to these front queues are done on the basis of priority number. For producing 
  priority against every url "prioritizer" function is implemented which takes a url and returns a number as priority of that url, the range of that priority number is in between 1 
  and no of front queues. Next mapping is done in such way that if priority no is 1 then that specified url will be assigned the front queue 1 and similarly if the priority no is 2
  then that url will be assigned to front queue 2 and so on.
+ 
  Next for moving the urls from front queus to back queues logic is implemented in such a way that there lies a greater chance of urls with greater priority to be selected to go to 
  the back queues as compared to those with lower priority. Another important point here is that only the url with same domain can come in back queues for example if the back queue 
  1 has one url with Oracle.com domain then next url that comes in this back queus will also be of Oracle.com domain. Yes if any back queue gets empty only then the domain of this 
