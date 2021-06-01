@@ -15,15 +15,15 @@
 ## Url Frontier Structure
  Url frontier is composed of two different type of queues i.e front queues and back queus. The number of front queues and back queues for now are kept 5 and 3 respectively. As  
  first step some urls from set of seed urls are pushed to these front queues. The assigning of urls to these front queues are done on the basis of priority number. For producing 
- priority against every url "prioritizer function is implemented which takes a url and returns a number as priority of that url, the range of that priority number is in between 1 
+ priority against every url "prioritizer" function is implemented which takes a url and returns a number as priority of that url, the range of that priority number is in between 1 
  and no of front queues. Next mapping is done in such way that if priority no is 1 then that specified url will be assigned the front queue 1 and similarly if the priority no is 2
  then that url will be assigned to front queue 2 and so on.
- Next for moving the urls from front queus to back queues logic is implemented in such a way that there lies a greater
- chence of urls with greater priority to the back queues as compared to those with lower priority. Another important point here is that only the url with same domain can come in 
- back queus for example if the back queue 1 has one url with Oracle.com domain then next url that comes in this back queus will also be of Oracle.com domain. Yes if any back queue
- gets empty only then the domain of this back queue can be changed and you can move any url with other domain from front queue to back queue. In additon to all this, the url from 
- front queue can only come to the back queue only if that back queue is empty otherwise not
- Futhermore a time stamp is kept with every back queue, indicating the earliest possible time any url from that back queue can popped out and taken by thread. This is done to 
- avoid frequent request access to same domain websit. The thread takes (Pops) the url from that back queue whose time stamp is greater than or equal to current time and shortest 
- among all other back queues, this indicates that you can access this url earliest and also as its time stamp is greater than or equal to current time so you can access it. Once a 
- url is taken out from any back queue the 15 seconds are added to the time stamp of that back queue so that same domain url will be accessed atleast 15 seconds later next time.
+ Next for moving the urls from front queus to back queues logic is implemented in such a way that there lies a greater chance of urls with greater priority to be selected to go to 
+ the back queues as compared to those with lower priority. Another important point here is that only the url with same domain can come in back queues for example if the back queue 
+ 1 has one url with Oracle.com domain then next url that comes in this back queus will also be of Oracle.com domain. Yes if any back queue gets empty only then the domain of this 
+ back queue can be changed and you can move any url with other domain from front queue to back queue. In additon to all this, the url from front queue can only come to the back 
+ queue only if that back queue is empty otherwise not. Futhermore a time stamp is kept with every back queue, indicating the earliest possible time any url from that back queue 
+ can popped out and taken by thread. This is done to avoid frequent request access to same domain websit. The thread takes (Pops) the url from that back queue whose time stamp is 
+ smaller than or equal to current time and shortest among all other back queues, this indicates that you can access this url earliest and also as its time stamp is shorter than or 
+ equal to current time so you can access it. Once a url is taken out from any back queue the 15 seconds are added to the time stamp of that back queue so that same domain url will 
+ be accessed atleast 15 seconds later next time.
