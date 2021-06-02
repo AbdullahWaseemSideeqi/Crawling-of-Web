@@ -31,4 +31,8 @@
  equal to current time so you can access it. Once a url is taken out from any back queue the 15 seconds are added to the time stamp of that back queue so that same domain url will 
  be accessed atleast 15 seconds later next time.
  
+ ## What to Install
+As this is a simply python notebook file so you just have to install Annaconda environment along with jupyter notebook. You can install the both of these by following the youtube vedio link provided as below.
+
+https://youtu.be/5mDYijMfSzs
  
